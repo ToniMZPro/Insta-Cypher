@@ -1,6 +1,5 @@
 #!/bin/bash
 
-trap 'store;exit 1' 2
 string4=$(openssl rand -hex 32 | cut -c 1-4)
 string8=$(openssl rand -hex 32  | cut -c 1-8)
 string12=$(openssl rand -hex 32 | cut -c 1-12)
@@ -10,7 +9,8 @@ uuid=$(openssl rand -hex 32 | cut -c 1-32)
 phone="$string8-$string4-$string4-$string4-$string12"
 guid="$string8-$string4-$string4-$string4-$string12"
 var=$(curl -i -s -H "$header" https://i.instagram.com/api/v1/si/fetch_headers/?challenge_type=signup&guid=$uuid > /dev/null)
-var2=$(echo $var | awk -F ';' '{print $2}' | cut -d '=' -f3)
+var2=$(echo $var | awk -trap 'store;exit 1' 2
+F ';' '{print $2}' | cut -d '=' -f3)
 
 checkroot() {
 if [[ "$(id -u)" -ne 0 ]]; then

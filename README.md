@@ -64,8 +64,7 @@ Follow these steps to install and use Insta-Cypher:
 
 After installation, you can run Insta-Cypher using the following command:
 ```
-./insta.sh
-```
+ 
 
 This command will start the script, allowing you to perform brute-force attacks on Instagram accounts.
 
